@@ -27,11 +27,11 @@ console.log(Pianist.play("Beethoven"));
 
  String.prototype.filterWords = function(arr) {
 	 
-	 if (arguments.length == 0) {
-      throw new Error('No parameter arr!');
+	if (arguments.length == 0) {
+		throw new Error('No parameter arr!');
     }
-	 if (!Array.isArray(arr)) {
-      throw new TypeError(arr + ' is not an Array');
+	if (!Array.isArray(arr)) {
+		throw new TypeError(arr + ' is not an Array');
     }
 	let str = this;
 	arr.forEach( (a) => str = str.replace(a, "***"));
@@ -51,7 +51,7 @@ function isWeekend(){
 	const day = todayDate.getDay(); // 0 - 6 (0 is Sunday)
 
 	// your code here
-    const week = {0:"weekend", 6:"weekend", 1:"weekday", 2:"weekday", 3:"weekday", 4:"weekday", 5:"weekday"};
+	const week = {0:"weekend", 6:"weekend", 1:"weekday", 2:"weekday", 3:"weekday", 4:"weekday", 5:"weekday"};
 	return week[day];
 }
 
@@ -69,7 +69,7 @@ console.log(isWeekend());
 	"price": 2.0
   };
 
-   const applyCoupon = x => y => z=> ({price: z.price * (1 - y) })
+  const applyCoupon = x => y => z=> ({price: z.price * (1 - y) })
  
   console.log(
   	applyCoupon("food")(0.1)(item).price === 1.8
