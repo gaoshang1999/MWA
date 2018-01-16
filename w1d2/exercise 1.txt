@@ -1,0 +1,27 @@
+1.
+
+setImmediate callbacks are called after I/O Queue callbacks are finished or timed out. setImmediate callbacks are placed in Check Queue, which are processed after I/O Queue.
+
+setTimeout(fn, 0) callbacks are placed in Timer Queue and will be called after I/O callbacks as well as Check Queue callbacks. As event loop, process the timer queue first in each iteration, so which one will be executed first depends on which phase event loop is.
+
+
+
+
+2.
+process.NextTick() would executed at next tick of event loop. However, the setImmediate, basically has a separate phase which ensures that the callback registered under setImmediate() will be called only after the IO callback and polling phase.
+
+
+3.
+Array 
+Boolean
+Date
+Number
+fs
+http
+os
+process
+stream 
+url
+util
+vm
+zlib
