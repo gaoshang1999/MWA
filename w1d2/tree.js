@@ -20,9 +20,6 @@ const f = function(tree, doc){
 	if ( tree.files.includes(doc)){
 		return true;
 	}
-	if (tree.subFolders.length == 0 ){
-		return false;
-	}
 
 	for (let t of tree.subFolders) {
 	   if( f(t, doc) ){
