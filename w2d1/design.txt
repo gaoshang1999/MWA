@@ -1,0 +1,18 @@
+var book = {
+	isbn: 'xxxx',
+	author: ['a', 'b', 'c'],
+	tag: ['t1', 't2', 't3'],
+
+        borrow: [{student_id: id1, student_name: xxx, return_date: date('20180301')},  
+                 {student_id: id2, student_name: yyy, return_date: date('20180311')},  
+		 {student_id: id3, student_name: zzz, return_date: date('20180401')},  ]
+
+ }
+
+
+var student = {        
+        student_id: 986001,
+        name: 'xx',
+        birth_date: 'xxxx',
+        other_info: ...
+}
