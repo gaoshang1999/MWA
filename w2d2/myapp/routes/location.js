@@ -10,9 +10,6 @@ var col = 'location';
 let ok = {status:"ok"};
 
 
-
-
-/* GET users listing. */
 router.get('/', function(req, res, next) {
   db.collection(col).find().toArray(function(err, result) {
     if (err) return console.log(err)
