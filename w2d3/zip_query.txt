@@ -1,0 +1,66 @@
+1, 
+//query all in IA 
+db.zips.aggregate([
+	  {$match: {state:'IA'}}
+]);
+
+//count all in IA 
+db.zips.aggregate([
+	  {$match: {state:'IA'}}
+    , { $count: 'cnt'}
+]);
+
+
+2, 
+// query all with population less than 1000
+db.zips.aggregate([
+	  {$match: {pop : {$lt: 1000}}}
+]);
+
+// count all with population less than 1000
+db.zips.aggregate([
+	  {$match: {pop : {$lt: 1000}}}
+    , { $count: 'cnt'}
+]);
+ 
+3, 
+// query all cities have more than one zipcode and sort by state and city name
+db.zips.aggregate([
+      {$group: {
+            _id: {state:'$state', city: '$city'}, 
+            zip_num : {$sum: 1}
+       }}, 
+	  {$match: {zip_num : {$gt: 1}}}, 
+      {$project: {
+            _id:0, 
+            state: '$_id.state',
+            city: '$_id.city',
+            zip_num: '$zip_num'
+      }},
+      {$sort : {state:1, city: 1}}
+]);
+
+
+4, 
+//display the least populated city in each state
+
+db.zips.aggregate([
+      {$group: {
+            _id: {state:'$state', city: '$city'}, 
+            pop : {$sum: '$pop'}
+       }}, 
+      {$sort : {'_id.state': 1,  pop: 1}} ,   
+      {$group: { 
+            _id: {"state": '$_id.state'}, 
+            city:  {$first: '$_id.city'},
+            pop : {$first: '$pop'}
+       }},
+       {$project: {
+            _id: 0, 
+            state: '$_id.state',
+            city: '$city',
+            pop: '$pop'
+       }}, 
+       {$sort: {state: 1} }
+]);
+
