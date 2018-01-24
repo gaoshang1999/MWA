@@ -1,0 +1,6 @@
+
+db.book.createIndex({tags:1})
+
+db.book.createIndex({borrow:1})
+
+db.student .createIndex({name:1})
