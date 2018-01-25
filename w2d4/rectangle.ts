@@ -1,6 +1,13 @@
-class Rectangle{
+class Shape{
+    constructor(public width:number=0, public length :number=0){}
 
-    constructor(public width:number, public length :number){}
+}
+
+class Rectangle extends Shape{
+
+    constructor(public width:number, public length :number){
+        super(width, length)
+    }
 
     calcSize() : number {
        return this.width * this.length;
